@@ -1,30 +1,31 @@
-
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta charset="UTF-8" />
 <title>My Drive - Google Drive</title>
+
 <style>
-  /* Make the page and game container take up 100% of the screen with no scrollbars */
-  html, body, #game_frame {
+html, body, #game_frame {
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     background-color: #000000;
-  }ac
+}
 </style>
+
 <script type="text/javascript">
 window.addEventListener("load", function() {
     countdown();
-    setTimeout(function(){
+
+    setTimeout(function() {
+
         var locallyEl = document.getElementById("locally");
         if (locallyEl) {
             locallyEl.remove();
         }
-        
+
         window.eaglercraftOpts = {
             container: "game_frame",
             assetsURI: getAssetsURI(),
@@ -32,39 +33,51 @@ window.addEventListener("load", function() {
             worldsFolder: "OFFLINE",
             mainMenu: {
                 splashes: [
-                    "Darviglet!", "eaglerenophile!", "You Eagler!", "Yeeeeeee!", "yeee",
-                    "EEEEEEEEE!", "You Darvig!", "You Vigg!", ":>", "|>", "You Yumpster!"
+                    "Darviglet!",
+                    "eaglerenophile!",
+                    "You Eagler!",
+                    "Yeeeeeee!",
+                    "yeee",
+                    "EEEEEEEEE!",
+                    "You Darvig!",
+                    "You Vigg!",
+                    ":>",
+                    "|>",
+                    "You Yumpster!"
                 ]
             },
             serverListTitle: "Ayonull hosts a list of servers:",
-            serverListLink: "https://eagler.nully.tech/servers",
+            serverListLink: '<a href="https://eagler.nully.tech/servers" target="_blank">https://eagler.nully.tech/servers</a>',
             relays: [
-                { addr: "wss://relay.deev.is/", name: "lax1dude relay #1", primary: true },
-                { addr: "wss://relay.lax1dude.net/", name: "lax1dude relay #2" },
-                { addr: "wss://relay.shhnowisnottheti.me/", name: "ayunami relay #1" }
+                {
+                    addr: "wss://relay.deev.is/",
+                    name: "lax1dude relay #1",
+                    primary: true
+                },
+                {
+                    addr: "wss://relay.lax1dude.net/",
+                    name: "lax1dude relay #2"
+                },
+                {
+                    addr: "wss://relay.shhnowisnottheti.me/",
+                    name: "ayunami relay #1"
+                }
             ]
         };
-        
+
         main();
 
-        // Trigger Fullscreen and Pointer Lock when clicking inside the game frame
         var gameFrame = document.getElementById("game_frame");
+
         if (gameFrame) {
             gameFrame.addEventListener("click", function() {
-                // Request Full Screen if not already active
-                if (!document.fullscreenElement) {
-                    gameFrame.requestFullscreen().catch(function(err) {
-                        console.log("Fullscreen request failed:", err);
-                    });
-                }
-                
-                // Lock the mouse cursor to the center of the screen
                 var canvas = gameFrame.querySelector("canvas") || gameFrame;
-                if (document.pointerLockElement !== canvas && canvas.requestPointerLock) {
+                if (canvas.requestPointerLock) {
                     canvas.requestPointerLock();
                 }
             });
         }
+
     }, 6000);
 });
 </script>
@@ -35624,13 +35637,15 @@ function countdown() {
 }
 </script>
 </head>
+
 <body style="margin:0px;width:100vw;height:100vh;" id="game_frame">
     <div id="locally" style="text-align:center;">
         <div style="height:5vh;"></div>
         <h2>you are running minecraft locally made by T and M</h2>
         <h3>the version you are currently using is from <span style="color:#cc0000;font-size:larger;">08/28/2022</span></h3>
-        <p id="countdown" style="text-align:center; font-size: 32px; font-weight: bold;">(will launch in 5)</p>
+        <p id="countdown" style="text-align:center;font-size:32px;font-weight:bold;">
+            (will launch in 5)
+        </p>
     </div>
 </body>
 </html>
-
